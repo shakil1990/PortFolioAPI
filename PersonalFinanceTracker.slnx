@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="personalfinancetracker.client/personalfinancetracker.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="PersonalFinanceTracker.Server/PersonalFinanceTracker.Server.csproj" />
+</Solution>

@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome (Vite dev server)",
+      "url": "https://localhost:51208",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Launch Edge (Vite dev server)",
+      "url": "https://localhost:51208",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

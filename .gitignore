@@ -14,7 +14,11 @@
 *.vcxproj.filters
 *.VC.db
 *.VC.opendb
-.vscode/
+
+# VS Code (keep shared launch/tasks; ignore the rest)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
 
 # Rider / JetBrains
 .idea/
@@ -83,16 +87,13 @@ coverage*/
 # ----------------------------------
 # Log & temp files
 # ----------------------------------
+logs
 *.log
 *.tmp
 *.temp
 *.cache
 *.bak
 *.orig
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
 
 
 # ----------------------------------
@@ -149,17 +150,20 @@ vendor/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 .npm
 .yarn-integrity
 dist/
+dist-ssr/
 .cache/
 .parcel-cache/
+*.local
 
 
 # ----------------------------------
 # Docker
 # ----------------------------------
-.dockerignore
 docker-compose.override.yml
 
 
@@ -183,3 +187,11 @@ docker-compose.override.yml
 *.res
 *.iobj
 *.ipdb
+
+# ----------------------------------
+# Project-specific (Vite / client tooling)
+# ----------------------------------
+*.ntvs*
+personalfinancetracker.client/**/*.njsproj
+personalfinancetracker.client/**/*.sln
+*.sw?
