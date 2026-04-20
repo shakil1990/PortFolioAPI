@@ -1,6 +1,4 @@
 using Microsoft.OpenApi;
-using PersonalFinanceTracker.Server.Application.Abstractions;
-using PersonalFinanceTracker.Server.Application.Services;
 using PersonalFinanceTracker.Server.Infrastructure.Data;
 using PersonalFinanceTracker.Server.Infrastructure.Data.Abstractions;
 
@@ -9,9 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Infrastructure
 builder.Services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
 builder.Services.AddScoped<IDataAccess, DapperDataAccess>();
-
-// Application
-builder.Services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

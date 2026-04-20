@@ -1,51 +1,38 @@
-import { useEffect, useState } from 'react';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { ExpenseProvider } from '@/context/ExpenseContext.jsx';
+import ExpenseSummaryPage from '@/pages/ExpenseSummaryPage.jsx';
+import AddExpensePage from '@/pages/AddExpensePage.jsx';
 import './App.css';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
+  return (
+    <ExpenseProvider>
+      <div className="app-shell">
+        <header className="app-nav" role="navigation" aria-label="Main">
+          <Link className="app-nav__brand" to="/expenses">
+            Personal finance
+          </Link>
+          <nav className="app-nav__links">
+            <Link className="app-nav__link" to="/expenses">
+              Summary
+            </Link>
+            <Link className="app-nav__link" to="/expenses/add">
+              Add expense
+            </Link>
+          </nav>
+        </header>
 
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
-    return (
-        <div>
-            <h1 id="tableLabel">Weather forecast test</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
-        </div>
-    );
-    
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        if (response.ok) {
-            const data = await response.json();
-            setForecasts(data);
-        }
-    }
+        <main className="app-main">
+          <Routes>
+            <Route path="/" element={<Navigate to="/expenses" replace />} />
+            <Route path="/expenses" element={<ExpenseSummaryPage />} />
+            <Route path="/expenses/add" element={<AddExpensePage />} />
+            <Route path="*" element={<Navigate to="/expenses" replace />} />
+          </Routes>
+        </main>
+      </div>
+    </ExpenseProvider>
+  );
 }
 
 export default App;
